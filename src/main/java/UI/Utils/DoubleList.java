@@ -1,8 +1,6 @@
 package UI.Utils;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class DoubleList<T> extends JPanel{
@@ -49,9 +47,9 @@ public class DoubleList<T> extends JPanel{
         this.addToListModel(this.rightListModel, element);
     }
     
-    private void addToListModel(DefaultListModel<T> list, T element)
+    private void addToListModel(DefaultListModel<T> listModel, T element)
     {
-        list.add(list.size(), element);
+        listModel.addElement(element);
     }
     
     private void moveSelectedElementOfAToB(DefaultListModel<T> A, DefaultListModel<T> B, List<T> elementsToMove)
