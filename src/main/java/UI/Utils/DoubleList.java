@@ -61,4 +61,7 @@ public class DoubleList<T> extends JPanel{
         }
     }
     
+    public DefaultListModel<T> getLeftListModel(){return this.leftListModel;}
+    public DefaultListModel<T> getRightListModel(){return this.rightListModel;}
+    
 }
