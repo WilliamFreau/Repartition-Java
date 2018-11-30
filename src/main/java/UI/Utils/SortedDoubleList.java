@@ -40,4 +40,5 @@ public class SortedDoubleList<T> extends JPanel{
             
         });
     }
+    
 }
