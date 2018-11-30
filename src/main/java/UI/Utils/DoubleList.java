@@ -3,8 +3,9 @@ package UI.Utils;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-public class DoubleList<T> {
+public class DoubleList<T> extends JPanel{
     private JPanel root;
     
     private JList<T> leftList;
@@ -30,11 +31,11 @@ public class DoubleList<T> {
     
     private void initListener() {
         this.fromLeftToRight.addActionListener( event -> {
-            
+            this.moveSelectedElementOfAToB(this.leftListModel, this.rightListModel, this.leftList.getSelectedValuesList());
         });
         
         this.fromRightToLeft.addActionListener( event -> {
-            
+            this.moveSelectedElementOfAToB(this.rightListModel, this.leftListModel, this.rightList.getSelectedValuesList());
         });
     }
     
@@ -51,6 +52,15 @@ public class DoubleList<T> {
     private void addToListModel(DefaultListModel<T> list, T element)
     {
         list.add(list.size(), element);
+    }
+    
+    private void moveSelectedElementOfAToB(DefaultListModel<T> A, DefaultListModel<T> B, List<T> elementsToMove)
+    {
+        for(T element : elementsToMove)
+        {
+            A.remove(A.indexOf(element));
+            B.addElement(element);
+        }
     }
     
 }
