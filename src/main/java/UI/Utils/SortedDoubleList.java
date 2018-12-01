@@ -40,4 +40,8 @@ public class SortedDoubleList<T> extends JPanel{
             
         });
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/SortedDoubleList
 }
