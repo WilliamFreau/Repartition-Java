@@ -10,12 +10,22 @@ import java.awt.*;
 public class RepartiteurSimple<T> extends JPanel {
     private JPanel root;
     
-    private JComboBox<T> compChoice;
+    private JComboBox<T> comboChoice;
     
     private SortedDoubleList<T> sortedDoubleList;
     
     public RepartiteurSimple() {
-        
+        this.initListener();
+    }
+    
+    private void initListener() {
+        this.comboChoice.addActionListener(al -> {
+            System.out.println("Ici le listener");
+        });
+    }
+    
+    public void addToComboBox(T element) {
+        comboChoice.addItem(element);
     }
     
     {
@@ -37,8 +47,8 @@ public class RepartiteurSimple<T> extends JPanel {
         root.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
         sortedDoubleList = new SortedDoubleList();
         root.add(sortedDoubleList.$$$getRootComponent$$$(), new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        compChoice = new JComboBox();
-        root.add(compChoice, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        comboChoice = new JComboBox();
+        root.add(comboChoice, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
     
     /**

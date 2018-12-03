@@ -1,8 +1,8 @@
 package UI;
 
+import UI.Component.RepartiteurSimple;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.uiDesigner.core.Spacer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +12,7 @@ public class MainWindow extends JFrame {
     private static int DEFAULT_HEIGHT = 600;
     
     private JPanel root;
+    private RepartiteurSimple<String> repartitionSimple;
     
     public MainWindow() {
         this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -20,6 +21,10 @@ public class MainWindow extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.setVisible(true);
+        
+        for (int i = 0; i < 10000; i++)
+            this.repartitionSimple.addToComboBox("test" + i);
+        
     }
     
     {
@@ -39,6 +44,8 @@ public class MainWindow extends JFrame {
     private void $$$setupUI$$$() {
         root = new JPanel();
         root.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        repartitionSimple = new RepartiteurSimple();
+        root.add(repartitionSimple.$$$getRootComponent$$$(), new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
     }
     
     /**
