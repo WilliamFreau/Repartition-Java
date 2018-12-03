@@ -14,7 +14,7 @@ public class TestPiece {
         
         Piece piece = new Piece(nomPiece, amnt);
         
-        assertEquals(nomPiece, piece.getName());
+        assertEquals(nomPiece, piece.getFullName());
         assertEquals(amnt, piece.getAmount());
     }
     

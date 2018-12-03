@@ -4,19 +4,37 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Piece {
-    private String name;
+    private String fullName;
     private String smallName;
     
     private int[] amount;
     
     private LinkedHashMap<Ligne, int[]> produceOn;
     
-    public Piece(String name, int[] amount) {
-        this.name = name;
+    public Piece(String fullName, int[] amount) {
+        this.fullName = fullName;
         this.amount = amount;
-        this.smallName = name;
+        this.smallName = fullName;
         
         this.produceOn = new LinkedHashMap<>();
+    }
+    
+    /**
+     * Return a Array wth the min of each cell of both tab
+     * @param tabA
+     * @param tabB
+     * @return  int[i]: Math.min(tabA[i], tabB[i])
+     */
+    private static int[] getBestRepart(int[] tabA, int[] tabB)
+    {
+        int[] returned = new int[tabA.length];
+        
+        for(int i = 0 ; i < tabA.length ; i++)
+        {
+            returned[i] = Math.min(tabA[i], tabB[i]);
+        }
+        
+        return returned;
     }
     
     public int[] alreadyPlace() {
@@ -47,8 +65,13 @@ public class Piece {
         this.smallName = smallName;
     }
     
-    public String getName() {
-        return name;
+    public int[] addProduceOn(Piece piece, int[] amntMax)
+    {
+        int[] pieceRepart = Piece.getBestRepart(this.amount, amntMax);
+        
+        
+        
+        return pieceRepart;
     }
     
     public String getSmallName() {
@@ -57,5 +80,9 @@ public class Piece {
     
     public int[] getAmount() {
         return amount;
+    }
+    
+    public String getFullName() {
+        return fullName;
     }
 }
