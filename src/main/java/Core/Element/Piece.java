@@ -65,13 +65,28 @@ public class Piece {
         this.smallName = smallName;
     }
     
-    public int[] addProduceOn(Piece piece, int[] amntMax)
+    public int[] addProduceOn(Ligne ligne, int[] amntMax)
     {
         int[] pieceRepart = Piece.getBestRepart(this.amount, amntMax);
         
-        
+        this.produceOn.put(ligne, pieceRepart);
         
         return pieceRepart;
+    }
+    
+    public boolean isFullProduce() {
+        boolean returned = true;
+        int[] remain = this.remainToPlace();
+        for(int el : remain)
+        {
+            returned &= el==0;
+        }
+        return returned;
+    }
+    
+    public boolean isFullReplaceOnIndex(int index)
+    {
+        return this.remainToPlace()[index]==0;
     }
     
     public String getSmallName() {
