@@ -1,5 +1,6 @@
 package Core.Element;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,24 +8,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestPiece {
     
+    String nomPiece;
+    private Piece piece;
+    private int[] amnt;
+    
+    @BeforeEach
+    public void setUP(){
+        amnt =  new int[]{100, 100, 200};
+        nomPiece = "Nom de la piece";
+        piece = new Piece(nomPiece, amnt);
+    }
+    
     @Test
-    public void testSurLeConstructeur() {
-        int[] amnt = {100, 100, 200};
-        String nomPiece = "Nom de la piece";
-        
-        Piece piece = new Piece(nomPiece, amnt);
-        
+    public void surLeConstructeur() {
         assertEquals(nomPiece, piece.getFullName());
         assertEquals(amnt, piece.getAmount());
     }
     
     @Test
-    public void testNoPieceProduceWhenCreate() {
-        int[] amnt = {100, 100, 200};
-        String nomPiece = "Nom de la piece";
-        
-        Piece piece = new Piece(nomPiece, amnt);
-        
+    public void noPieceProduceWhenCreate() {
         int[] remain = piece.remainToPlace();
         int[] alreadyPlace = piece.alreadyPlace();
         
@@ -33,6 +35,11 @@ public class TestPiece {
             assertEquals(remain[i], amnt[i]);
             assertEquals(alreadyPlace[i], 0);
         }
+    }
+    
+    @Test
+    public void assignementNotFull(){
+        
     }
     
 }
