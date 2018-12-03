@@ -1,4 +1,4 @@
-package Core.Elements;
+package Core.Element;
 
 public class Ligne {
     private String name;
