@@ -1,36 +1,33 @@
 package Core.Elements;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Piece {
     private String name;
     private String smallName;
     
-    private int amount;
+    private int[] amount;
     
-    private LinkedHashMap<Ligne, Integer> produceOn;
-    private List<Ligne> assignedTo;
+    private LinkedHashMap<Ligne, int[]> produceOn;
     
-    
-    public Piece(String name, int amount) {
+    public Piece(String name, int[] amount) {
         this.name = name;
         this.amount = amount;
         this.smallName = name;
         
         this.produceOn = new LinkedHashMap<>();
-        this.assignedTo = new ArrayList<>();
     }
     
-    
-    
-    public int remainToPlace() {
-        int somme = 0;
-        for(Map.Entry<Ligne, Integer> entry : this.produceOn.entrySet())
+    public int[] remainToPlace() {
+        int[] somme = new int[amount.length];
+        
+        for(Map.Entry<Ligne, int[]> entry : this.produceOn.entrySet())
         {
-            somme += entry.getValue();
+            for(int i = 0 ; i < amount.length ; i++)
+            {
+                somme[i] += entry.getValue()[i];
+            }
         }
         return somme;
     }
