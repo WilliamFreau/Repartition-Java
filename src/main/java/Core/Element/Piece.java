@@ -19,14 +19,15 @@ public class Piece {
         this.produceOn = new LinkedHashMap<>();
     }
     
+    
+    
     /**
      * Return a Array wth the min of each cell of both tab
      * @param tabA
      * @param tabB
      * @return  int[i]: Math.min(tabA[i], tabB[i])
      */
-    private static int[] getBestRepart(int[] tabA, int[] tabB)
-    {
+    private static int[] getBestRepart(int[] tabA, int[] tabB) {
         int[] returned = new int[tabA.length];
         
         for(int i = 0 ; i < tabA.length ; i++)
@@ -65,13 +66,26 @@ public class Piece {
         this.smallName = smallName;
     }
     
-    public int[] addProduceOn(Ligne ligne, int[] amntMax)
-    {
+    public int[] addProduceOn(Ligne ligne, int[] amntMax) {
         int[] pieceRepart = Piece.getBestRepart(this.amount, amntMax);
         
         this.produceOn.put(ligne, pieceRepart);
         
         return pieceRepart;
+    }
+    
+    public int[] removeProduceOn(Ligne ligne)
+    {
+        int[] returned = new int[amount.length];
+        
+        if(this.produceOn.containsKey(ligne))
+        {
+            returned = this.produceOn.get(ligne);
+            this.produceOn.remove(ligne);
+            //TODO: Faire le rebuild des quantites vue qu'on faire de faire du vide...
+        }
+        
+        return returned;
     }
     
     public boolean isFullProduce() {
