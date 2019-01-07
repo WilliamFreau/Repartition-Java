@@ -21,10 +21,6 @@ public class MainWindow extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.setVisible(true);
-        
-        for (int i = 0; i < 10000; i++)
-            this.repartitionSimple.addToComboBox("test" + i);
-        
     }
     
     {
@@ -54,4 +50,5 @@ public class MainWindow extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return root;
     }
+    
 }
