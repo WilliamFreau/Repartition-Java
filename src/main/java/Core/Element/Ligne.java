@@ -19,6 +19,7 @@ public class Ligne {
     {
         this.name = name;
         this.smallName = name;
+        this.capacity = capacity;
         
         produced = new LinkedHashMap<>();
         canProduce = new ArrayList<>();
@@ -48,7 +49,7 @@ public class Ligne {
         //TODO: Le rebuild du model
     }
     
-    public int[] getRemainProductionCapacity(){
+    public int[] getCurrentProduction(){
         int[] returned = new int[this.capacity.length];
         
         for(Map.Entry<Piece, int[]> entry : produced.entrySet())
@@ -57,6 +58,17 @@ public class Ligne {
             {
                 returned[i] += entry.getValue()[i];
             }
+        }
+        
+        return returned;
+    }
+    
+    public int[] getRemainProductionCapacity(){
+        int[] currentProd = this.getCurrentProduction();
+        int[] returned = new int[currentProd.length];
+        
+        for(int i = 0 ; i < currentProd.length ; i++) {
+            returned[i] = this.capacity[i]-currentProd[i];
         }
         
         return returned;
